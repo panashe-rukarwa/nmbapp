@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<div>
+<h2 align="center">Spring Boot NMBapp</h2>
+<tr>
+<div align = "left" >   
+     <h3><a  th:href="@{'/new'}">Add New Customer</a></h3>    
+    </div>
+</tr>
+<tr>
+<div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" >
+                 <table class="table">
+  <thead class="thead-dark">
+    <tr>
+       <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>National ID</th>            
+            <th>Title</th>
+            <th>Homeowner</th>
+            <th>Email</th>
+            <th>Creation Date</th>
+            <th>Gender</th>
+            <th>Username</th>
+            <th>Edit</th>
+            <th>Delete</th>
+   </tr>
+  </thead>
+  <tbody>
+      <tr  th:each="customer : ${listcustomer }">
+<td th:text="${customer.id}">Customer ID</td>
+<td th:text="${customer.firstname}">First Name</td>
+<td th:text="${customer.surname}">Surname</td>
+<td th:text="${customer.nationalid}">National ID</td>
+<td th:text="${customer.title}">Title</td>
+<td th:text="${customer.homeowner}">Homeowner</td>
+<td th:text="${customer.email}">Email</td>
+<td th:text="${customer.creationdate}">Creation Date</td>
+<td th:text="${customer.gender}">Gender</td>
+<td th:text="${customer.username}">Username</td>
+<td>
+<a th:href="@{'/edit/' + ${customer.id}}">Edit</a>
+</td>     
+<td>
+<a th:href="@{'/delete/' + ${customer.id}}">Delete</a>
+</td>     
+</tr>
+  
+  </tbody>
+</table>
+                    
+                 </div>
+ 
+            </div>
+ 
+</tr>
+ 
+</tbody>
+</table>
+<br><br><br><br>
+<div align = "left" >   
+     <h3><a  th:href="@{'/newaccount'}">Add New Account</a></h3>    
+    </div>
+<div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" >
+                 <table class="table">
+  <thead class="thead-dark">
+    <tr>
+       <th>Account ID</th>
+            <th>Account Number</th>
+            <th>Date of Creation</th>
+            <th>Currency</th>            
+            <th>Mobile Number</th>
+            <th>Branch</th>
+            <th>Initial Balance</th>
+            <th>Active Balance</th>
+            <th>Debit Amount</th>
+            <th>Credit Amount</th>
+            <th>Debit Narration</th>
+            <th>Credit Narration</th>
+            <th>Edit</th>
+            <th>Delete</th>
+   </tr>
+  </thead>
+  <tbody>
+      <tr  th:each="account : ${listaccount }">
+<td th:text="${account.id}">Account ID</td>
+<td th:text="${account.accountnumber}">Account Number</td>
+<td th:text="${account.dateofcreation}">Date of Creation</td>
+<td th:text="${account.currency}">Currency</td>
+<td th:text="${account.mobilenumber}">Mobile Number</td>
+<td th:text="${account.branch}">Branch</td>
+<td th:text="${account.initialbalance}">Initial Balance</td>
+<td th:text="${account.activebalance}">Active Balance</td>
+<td th:text="${account.debitamount}">Debit Amount</td>
+<td th:text="${account.creditamount}">Credit Amount</td>
+<td th:text="${account.debitnarration}">Debit Narration</td>
+<td th:text="${account.creditnarration}">Credit Narration</td>
+<td>
+<a th:href="@{'/edit/' + ${account.id}}">Edit</a>
+</td>     
+<td>
+<a th:href="@{'/delete/' + ${account.id}}">Delete</a>
+</td>     
+</tr>
+  
+  </tbody>
+</table>
+                    
+                 </div>
+ 
+            </div>
+ 
+</tr>
+ 
+</tbody>
+</table>
+<div>
+</body>
+</html>
