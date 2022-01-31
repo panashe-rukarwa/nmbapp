@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.NMBapp.domain.Account;
 import com.example.NMBapp.domain.Customer;
 import com.example.NMBapp.service.NmbService;
 
@@ -24,6 +25,8 @@ public class NmbController {
 	public String viewHomePage(Model model){
 	    List<Customer>listcustomer = service.listAll();
 	    model.addAttribute("listcustomer", listcustomer);
+	    List<Account>listaccount = service.listAllAcc();
+	    model.addAttribute("listaccount", listaccount);
 	    System.out.println("Get/");
 	    return "index";
 	}
@@ -55,5 +58,32 @@ public class NmbController {
 	    return "redirect:/";
 	} 
 
+
+	@GetMapping("/newaccount")
+	public String addAcc(Model model){
+	    model.addAttribute("account", new Account());
+	    return "newAccount";
+	}
+
+	@RequestMapping(value="/saveAcc", method=RequestMethod.POST)
+	public String saveAccount(@ModelAttribute("account") Account std){
+	    service.save(std);
+	    return "redirect:/";
+	} 
+
+
+	@RequestMapping("/editAcc/{id}")
+	public ModelAndView showEditAccountPage(@PathVariable(name="id")int id){
+	    ModelAndView mav = new ModelAndView("NewAccount");
+	    Customer std = service.get(id);
+	    mav.addObject("account", std);
+	    return mav;
+	} 
+
+	@RequestMapping("/deleteAcc/{id}")
+	public String deleteAccount(@PathVariable(name="id")int id){
+	    service.delete(id);
+	    return "redirect:/";
+	} 
 
 }

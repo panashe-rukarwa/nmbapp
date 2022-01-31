@@ -67,7 +67,7 @@
 </table>
 <br><br><br><br>
 <div align = "left" >   
-     <h3><a  th:href="@{'/NewAccount'}">Add New Account</a></h3>    
+     <h3><a  th:href="@{'/newaccount'}">Add New Account</a></h3>    
     </div>
 <div class="col-sm-5" align = "center">
                  <div class="panel-body" align = "center" >
@@ -95,7 +95,7 @@
 <td th:text="${account.id}">Account ID</td>
 <td th:text="${account.accountnumber}">Account Number</td>
 <td th:text="${account.dateofcreation}">Date of Creation</td>
-<td th:text="${customer.currency}">Currency</td>
+<td th:text="${account.currency}">Currency</td>
 <td th:text="${account.mobilenumber}">Mobile Number</td>
 <td th:text="${account.branch}">Branch</td>
 <td th:text="${account.initialbalance}">Initial Balance</td>
