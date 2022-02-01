@@ -36,7 +36,7 @@
   </thead>
   <tbody>
       <tr  th:each="customer : ${listcustomer }">
-<td th:text="${customer.id}">Customer ID</td>
+<td th:text="${customer.customerid}">Customer ID</td>
 <td th:text="${customer.firstname}">First Name</td>
 <td th:text="${customer.surname}">Surname</td>
 <td th:text="${customer.nationalid}">National ID</td>
@@ -47,10 +47,10 @@
 <td th:text="${customer.gender}">Gender</td>
 <td th:text="${customer.username}">Username</td>
 <td>
-<a th:href="@{'/edit/' + ${customer.id}}">Edit</a>
+<a th:href="@{'/edit/' + ${customer.customerid}}">Edit</a>
 </td>     
 <td>
-<a th:href="@{'/delete/' + ${customer.id}}">Delete</a>
+<a th:href="@{'/delete/' + ${customer.customerid}}">Delete</a>
 </td>     
 </tr>
   
@@ -92,7 +92,7 @@
   </thead>
   <tbody>
       <tr  th:each="account : ${listaccount }">
-<td th:text="${account.id}">Account ID</td>
+<td th:text="${account.accountid}">Account ID</td>
 <td th:text="${account.accountnumber}">Account Number</td>
 <td th:text="${account.dateofcreation}">Date of Creation</td>
 <td th:text="${account.currency}">Currency</td>
@@ -105,10 +105,10 @@
 <td th:text="${account.debitnarration}">Debit Narration</td>
 <td th:text="${account.creditnarration}">Credit Narration</td>
 <td>
-<a th:href="@{'/edit/' + ${account.id}}">Edit</a>
+<a th:href="@{'/editAcc/' + ${account.accountid}}">Edit</a>
 </td>     
 <td>
-<a th:href="@{'/delete/' + ${account.id}}">Delete</a>
+<a th:href="@{'/deleteAcc/' + ${account.accountid}}">Delete</a>
 </td>     
 </tr>
   

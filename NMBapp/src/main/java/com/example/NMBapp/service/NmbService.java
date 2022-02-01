@@ -26,28 +26,28 @@ public class NmbService {
 		repo.save(std);
 	}
 	
-	public Customer get(long id) {
-		return repo.findById(id).get();
+	public Customer get(long customerid) {
+		return repo.findById(customerid).get();
 	}
 	
-	public void delete(long id) {
-		repo.deleteById(id);
+	public void delete(long customerid) {
+		repo.deleteById(customerid);
 	}
 	
 	public List<Account>listAllAcc(){
 		return repos.findAll();
 	}
 	
-	public void save(Account std) {
+	public void saveAcc(Account std) {
 		repos.save(std);
 	}
 	
-	public Account get1(long id) {
-		return repos.findById(id).get();
+	public Account getAcc(long accountid) {
+		return repos.findById(accountid).get();
 	}
 	
-	public void delete1(long id) {
-		repos.deleteById(id);
+	public void deleteAcc(long accountid) {
+		repos.deleteById(accountid);
 	}
 }
 

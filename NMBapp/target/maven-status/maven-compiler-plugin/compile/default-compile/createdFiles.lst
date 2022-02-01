@@ -1,5 +1,8 @@
 com\example\NMBapp\repository\NmbRepository.class
-com\example\NMBapp\controller\NmbController.class
 com\example\NMBapp\NmBappApplication.class
-com\example\NMBapp\domain\Customer.class
 com\example\NMBapp\service\NmbService.class
+com\example\NMBapp\domain\AccountStatement.class
+com\example\NMBapp\repository\NmbAccountRepository.class
+com\example\NMBapp\controller\NmbController.class
+com\example\NMBapp\domain\Customer.class
+com\example\NMBapp\domain\Account.class

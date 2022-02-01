@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2022 at 10:55 PM
+-- Generation Time: Feb 01, 2022 at 10:50 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -29,19 +29,26 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `account` (
-  `id` int(11) NOT NULL,
+  `accountid` int(11) NOT NULL,
   `accountnumber` int(50) NOT NULL,
   `dateofcreation` date NOT NULL,
   `currency` varchar(20) NOT NULL,
   `mobilenumber` int(15) NOT NULL,
   `branch` varchar(50) NOT NULL,
-  `initialbalance` double NOT NULL,
-  `activebalance` double NOT NULL,
-  `debitamount` double NOT NULL,
-  `creditamount` double NOT NULL,
+  `initialbalance` float NOT NULL,
+  `activebalance` float NOT NULL,
+  `debitamount` float NOT NULL,
+  `creditamount` float NOT NULL,
   `debitnarration` varchar(50) NOT NULL,
   `creditnarration` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`accountid`, `accountnumber`, `dateofcreation`, `currency`, `mobilenumber`, `branch`, `initialbalance`, `activebalance`, `debitamount`, `creditamount`, `debitnarration`, `creditnarration`) VALUES
+(3, 75959588, '2022-02-01', 'usd', 453876543, 'chitown', 7658.98, 7696.65, 5467.98, 43678.8, 'a debit', 'a credit');
 
 -- --------------------------------------------------------
 
@@ -62,15 +69,15 @@ CREATE TABLE `branch` (
 --
 
 CREATE TABLE `customer` (
-  `id` int(11) NOT NULL,
-  `firstname` text NOT NULL,
-  `surname` text NOT NULL,
+  `customerid` bigint(20) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `surname` varchar(50) NOT NULL,
   `nationalid` varchar(20) NOT NULL,
-  `title` text NOT NULL,
-  `homeowner` text NOT NULL,
+  `title` varchar(20) NOT NULL,
+  `homeowner` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `creationdate` date NOT NULL,
-  `gender` text NOT NULL,
+  `gender` varchar(30) NOT NULL,
   `username` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -95,8 +102,8 @@ CREATE TABLE `transaction` (
 -- Indexes for table `account`
 --
 ALTER TABLE `account`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`),
+  ADD PRIMARY KEY (`accountid`),
+  ADD KEY `id` (`accountid`),
   ADD KEY `accountnumber` (`accountnumber`);
 
 --
@@ -109,7 +116,7 @@ ALTER TABLE `branch`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`customerid`);
 
 --
 -- Indexes for table `transaction`
@@ -126,7 +133,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `accountid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `branch`
@@ -138,23 +145,17 @@ ALTER TABLE `branch`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customerid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `account`
---
-ALTER TABLE `account`
-  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`accountnumber`) REFERENCES `transaction` (`accountnumber`);
-
---
 -- Constraints for table `branch`
 --
 ALTER TABLE `branch`
-  ADD CONSTRAINT `branch_ibfk_1` FOREIGN KEY (`id`) REFERENCES `account` (`id`);
+  ADD CONSTRAINT `branch_ibfk_1` FOREIGN KEY (`id`) REFERENCES `account` (`accountid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

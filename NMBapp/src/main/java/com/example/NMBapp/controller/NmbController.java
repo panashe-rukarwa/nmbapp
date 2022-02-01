@@ -44,17 +44,17 @@ public class NmbController {
 	} 
 
 
-	@RequestMapping("/edit/{id}")
-	public ModelAndView showEditCustomerPage(@PathVariable(name="id")int id){
+	@RequestMapping("/edit/{customerid}")
+	public ModelAndView showEditCustomerPage(@PathVariable(name="customerid")int customerid){
 	    ModelAndView mav = new ModelAndView("new");
-	    Customer std = service.get(id);
+	    Customer std = service.get(customerid);
 	    mav.addObject("customer", std);
 	    return mav;
 	} 
 
-	@RequestMapping("/delete/{id}")
-	public String deleteCustomer(@PathVariable(name="id")int id){
-	    service.delete(id);
+	@RequestMapping("/delete/{customerid}")
+	public String deleteCustomer(@PathVariable(name="customerid")int customerid){
+	    service.delete(customerid);
 	    return "redirect:/";
 	} 
 
@@ -62,27 +62,27 @@ public class NmbController {
 	@GetMapping("/newaccount")
 	public String addAcc(Model model){
 	    model.addAttribute("account", new Account());
-	    return "newAccount";
+	    return "newaccount";
 	}
 
 	@RequestMapping(value="/saveAcc", method=RequestMethod.POST)
 	public String saveAccount(@ModelAttribute("account") Account std){
-	    service.save(std);
+	    service.saveAcc(std);
 	    return "redirect:/";
 	} 
 
 
-	@RequestMapping("/editAcc/{id}")
-	public ModelAndView showEditAccountPage(@PathVariable(name="id")int id){
-	    ModelAndView mav = new ModelAndView("NewAccount");
-	    Customer std = service.get(id);
+	@RequestMapping("/editAcc/{accountid}")
+	public ModelAndView showEditAccountPage(@PathVariable(name="accountid")int accountid){
+	    ModelAndView mav = new ModelAndView("newaccount");
+	    Account std = service.getAcc(accountid);
 	    mav.addObject("account", std);
 	    return mav;
 	} 
 
-	@RequestMapping("/deleteAcc/{id}")
-	public String deleteAccount(@PathVariable(name="id")int id){
-	    service.delete(id);
+	@RequestMapping("/deleteAcc/{accountid}")
+	public String deleteAccount(@PathVariable(name="accountid")int accountid){
+	    service.deleteAcc(accountid);
 	    return "redirect:/";
 	} 
 
